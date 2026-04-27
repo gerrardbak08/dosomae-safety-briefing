@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; background: #f7f8fa; }
+
+  .bg {
+    position: absolute; inset: 0;
+    background: #f7f8fa;
+  }
+  /* 상단 진한 파랑 헤더 바 */
+  .header-bar {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 220px;
+    background: linear-gradient(135deg, #1a3fa8 0%, #2456d6 60%, #3b6af0 100%);
+  }
+  /* 헤더 우측 장식 원 */
+  .header-bar::before {
+    content: '';
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 320px; height: 320px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .header-bar::after {
+    content: '';
+    position: absolute;
+    right: 120px; bottom: -40px;
+    width: 180px; height: 180px; border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  /* 하단 흰 구역 */
+  .body-area {
+    position: absolute;
+    left: 0; top: 220px;
+    width: 100%; height: 410px;
+    background: #fff;
+    border-top: 3px solid #2456d6;
+  }
+
+  .container {
+    position: relative; z-index: 1;
+    width: 1200px; height: 630px;
+  }
+
+  /* 상단 헤더 콘텐츠 */
+  .header-content {
+    padding: 44px 72px 0;
+    color: #fff;
+  }
+  .exec-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 5px 14px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .dot-white { width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+  .header-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 36px; font-weight: 700;
+    line-height: 1.25; letter-spacing: -0.5px;
+    color: #fff;
+  }
+  .header-title .light { font-weight: 400; opacity: 0.85; }
+
+  /* 하단 바디 콘텐츠 */
+  .body-content {
+    position: absolute;
+    top: 240px; left: 0; right: 0;
+    padding: 0 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid #ecedf0;
+    border-radius: 10px;
+    padding: 20px 22px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .card-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: #f1f5fe;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+  .card-label {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 11px; color: #8b93a0;
+    font-weight: 500; letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .card-value {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px; font-weight: 700; color: #0f1115;
+    letter-spacing: -0.5px;
+  }
+  .card-value .unit { font-size: 13px; color: #8b93a0; font-weight: 400; margin-left: 2px; }
+  .card-sub {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 11px; color: #8b93a0;
+    margin-top: 4px;
+  }
+  .card.accent { border-color: #2456d6; background: #f1f5fe; }
+  .card.accent .card-value { color: #2456d6; }
+  .card.warn { border-color: #f0c060; background: #fef9ed; }
+  .card.warn .card-value { color: #b95c00; }
+
+  /* 하단 태그 & URL */
+  .footer-row {
+    position: absolute;
+    bottom: 36px; left: 72px; right: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .tag-row { display: flex; gap: 8px; }
+  .tag {
+    background: #f0f3f7;
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 11px; color: #4d5562; font-weight: 500;
+  }
+  .url-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: #c8cdd6;
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="header-bar"></div>
+<div class="body-area"></div>
+
+<div class="container">
+  <div class="header-content">
+    <div class="exec-badge">
+      <div class="dot-white"></div>
+      Executive Briefing
+    </div>
+    <div class="header-title">
+      도·소매업 안전보건 협의체<br/>
+      <span class="light">임원 브리핑 — ㈜아성다이소 안전보건팀</span>
+    </div>
+  </div>
+
+  <div class="body-content">
+    <div class="card accent">
+      <div class="card-icon">⚖️</div>
+      <div class="card-label">적용 업종</div>
+      <div class="card-value">도·소매업</div>
+      <div class="card-sub">산업안전보건법 협의체 의무</div>
+    </div>
+    <div class="card warn">
+      <div class="card-icon">📋</div>
+      <div class="card-label">협의체 구성</div>
+      <div class="card-value">필수<span class="unit">운영</span></div>
+      <div class="card-sub">반기 1회 이상 회의 개최</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <div class="card-label">브리핑 목적</div>
+      <div class="card-value">의사결정<span class="unit">지원</span></div>
+      <div class="card-sub">임원 안전보건 현황 공유</div>
+    </div>
+  </div>
+
+  <div class="footer-row">
+    <div class="tag-row">
+      <div class="tag">협의체 운영</div>
+      <div class="tag">법적 의무</div>
+      <div class="tag">안전보건 현황</div>
+      <div class="tag">2026</div>
+    </div>
+    <div class="url-text">gerrardbak08.github.io/dosomae-safety-briefing</div>
+  </div>
+</div>
+</body>
+</html>
